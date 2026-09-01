@@ -1,36 +1,52 @@
 ---
+import '@/styles/global.css';
+import Navbar from '@/components/layout/Navbar.astro';
+import Footer from '@/components/layout/Footer.astro';
+import WhatsAppButton from '@/components/shared/WhatsAppButton.astro';
+import { companyInfo } from '@/data/company';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
 interface Props {
-	title: string;
+  locale: Locale;
+  dict: Dictionary;
+  title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const { locale, dict, title, description = companyInfo.description } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="ru">
-	<head>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-		<meta name="generator" content={Astro.generator} />
-		<title>{title}</title>
-	</head>
-	<body>
-		<slot />
-	</body>
+<html lang={locale}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="generator" content={Astro.generator} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Mouana Phuket" />
+  </head>
+  <body class="min-h-screen antialiased">
+    <Navbar locale={locale} dict={dict} />
+    <main class="min-h-screen">
+      <slot />
+    </main>
+    <Footer locale={locale} dict={dict} />
+    <WhatsAppButton phone={companyInfo.contact.whatsapp} />
+    <script>
+      import '@/scripts/reveal.ts';
+    </script>
+  </body>
 </html>
-
-<style is:global>
-	:root {
-		color-scheme: light dark;
-	}
-
-	* {
-		box-sizing: border-box;
-	}
-
-	body {
-		margin: 0;
-		font-family: system-ui, sans-serif;
-	}
-</style>

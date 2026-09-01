@@ -1,0 +1,129 @@
+---
+import LanguageSwitcher from './LanguageSwitcher.astro';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const nav = dict.nav;
+
+const navLinks = [
+  { href: `/${locale}`, label: nav.home },
+  { href: `/${locale}/about`, label: nav.about },
+  { href: `/${locale}/projects`, label: nav.projects },
+  { href: `/${locale}/blog`, label: nav.blog },
+  { href: `/${locale}/contact`, label: nav.contact },
+];
+---
+
+<header class="site-header fixed top-0 left-0 right-0 z-50" data-scrolled="false">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="flex items-center justify-between h-20">
+      <a href={`/${locale}`} class="nav-text font-serif text-xl md:text-2xl tracking-wider">
+        MOUANA<span class="text-gold ml-1">PHUKET</span>
+      </a>
+
+      <nav class="hidden lg:flex items-center gap-8">
+        {navLinks.map((link) => (
+          <a href={link.href} class="nav-text text-sm tracking-wide transition-colors hover:text-gold">
+            {link.label}
+          </a>
+        ))}
+        <span class="nav-text">
+          <LanguageSwitcher locale={locale} />
+        </span>
+      </nav>
+
+      <button
+        type="button"
+        class="mobile-menu-toggle nav-text lg:hidden p-2"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <svg class="icon-menu w-6 h-6" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="12" x2="20" y2="12"></line><line x1="4" y1="6" x2="20" y2="6"></line><line x1="4" y1="18" x2="20" y2="18"></line></svg>
+        <svg class="icon-close w-6 h-6 hidden" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<div class="mobile-menu fixed inset-0 z-40 bg-charcoal/95 backdrop-blur-lg hidden flex-col items-center justify-center">
+  <nav class="flex flex-col items-center gap-8">
+    {navLinks.map((link) => (
+      <a href={link.href} class="text-white text-2xl font-serif tracking-wider hover:text-gold transition-colors">
+        {link.label}
+      </a>
+    ))}
+    <LanguageSwitcher locale={locale} />
+  </nav>
+</div>
+
+<style>
+  .site-header {
+    background: transparent;
+    transition: background-color 0.5s ease, box-shadow 0.5s ease, backdrop-filter 0.5s ease;
+  }
+
+  .site-header[data-scrolled='true'] {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  }
+
+  .site-header .nav-text {
+    color: white;
+    transition: color 0.5s ease;
+  }
+
+  .site-header[data-scrolled='true'] .nav-text {
+    color: var(--color-charcoal, #1a1a1a);
+  }
+
+  .mobile-menu.flex {
+    display: flex;
+  }
+</style>
+
+<script>
+  function initNavbar() {
+    const header = document.querySelector<HTMLElement>('.site-header');
+    const toggle = document.querySelector<HTMLButtonElement>('.mobile-menu-toggle');
+    const menu = document.querySelector<HTMLElement>('.mobile-menu');
+    const iconMenu = document.querySelector('.icon-menu');
+    const iconClose = document.querySelector('.icon-close');
+    if (!header || !toggle || !menu) return;
+    if (header.dataset.jsInit) return;
+    header.dataset.jsInit = 'true';
+
+    const onScroll = () => {
+      header.dataset.scrolled = window.scrollY > 50 ? 'true' : 'false';
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+
+    toggle.addEventListener('click', () => {
+      const isOpen = menu.classList.toggle('flex');
+      menu.classList.toggle('hidden', !isOpen);
+      toggle.setAttribute('aria-expanded', String(isOpen));
+      iconMenu?.classList.toggle('hidden', isOpen);
+      iconClose?.classList.toggle('hidden', !isOpen);
+      document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    menu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('flex');
+        menu.classList.add('hidden');
+        iconMenu?.classList.remove('hidden');
+        iconClose?.classList.add('hidden');
+        document.body.style.overflow = '';
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initNavbar);
+  document.addEventListener('astro:page-load', initNavbar);
+</script>
