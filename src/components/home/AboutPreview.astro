@@ -1,0 +1,56 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import Button from '@/components/shared/Button.astro';
+import { companyInfo } from '@/data/company';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const home = dict.home.about;
+const { stats } = companyInfo;
+
+const counters = [
+  { target: stats.projects, label: 'Projects' },
+  { target: stats.villas, label: 'Villas' },
+  { target: stats.villasAvailable, label: 'Available' },
+  { target: stats.villasInProgress, label: 'In Progress' },
+];
+---
+
+<section class="py-20 md:py-28 bg-cream">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+      <ScrollReveal direction="left">
+        <span class="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">About</span>
+        <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-charcoal leading-tight mb-6">
+          {home.title}
+        </h2>
+        <p class="text-warm-gray leading-relaxed mb-8">
+          {home.description}
+        </p>
+        <Button href={`/${locale}/about`} variant="primary">
+          {home.cta}
+        </Button>
+      </ScrollReveal>
+
+      <ScrollReveal direction="right">
+        <div class="grid grid-cols-2 gap-8">
+          {counters.map((c) => (
+            <div class="text-center p-6 bg-white rounded-lg">
+              <span class="font-serif text-4xl md:text-5xl text-gold" data-counter={c.target}>0</span>
+              <p class="text-warm-gray text-sm mt-2">{c.label}</p>
+            </div>
+          ))}
+        </div>
+      </ScrollReveal>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '@/scripts/counter.ts';
+</script>

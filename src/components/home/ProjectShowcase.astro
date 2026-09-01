@@ -1,0 +1,28 @@
+---
+import { projects } from '@/data/projects';
+import ProjectCard from '@/components/projects/ProjectCard.astro';
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const home = dict.home.showcase;
+const projectDict = dict.projects;
+---
+
+<section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+  <SectionHeading title={home.title} subtitle={home.subtitle} />
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project, i) => (
+      <ScrollReveal delay={i * 0.1}>
+        <ProjectCard project={project} locale={locale} dict={projectDict} />
+      </ScrollReveal>
+    ))}
+  </div>
+</section>

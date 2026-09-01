@@ -1,0 +1,67 @@
+---
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import type { Dictionary } from '@/lib/i18n';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+const home = dict.home.gallery;
+
+const galleryImages = [
+  { src: '/images/gallery-1.svg', alt: 'Luxury Villa Exterior' },
+  { src: '/images/gallery-2.svg', alt: 'Modern Living Room' },
+  { src: '/images/gallery-3.svg', alt: 'Private Pool' },
+  { src: '/images/gallery-4.svg', alt: 'Kitchen Design' },
+  { src: '/images/gallery-5.svg', alt: 'Master Bedroom' },
+  { src: '/images/gallery-6.svg', alt: 'Garden View' },
+];
+---
+
+<section class="py-20 md:py-28 bg-charcoal">
+  <div class="max-w-7xl mx-auto px-4 md:px-8">
+    <SectionHeading title={home.title} subtitle={home.subtitle} light />
+
+    <div class="js-gallery grid grid-cols-2 md:grid-cols-3 gap-4">
+      {galleryImages.map((image, i) => (
+        <ScrollReveal delay={i * 0.1}>
+          <div
+            class="relative aspect-[4/3] cursor-pointer overflow-hidden group"
+            data-gallery-item
+            data-src={image.src}
+            data-alt={image.alt}
+          >
+            <img
+              src={image.src}
+              alt={image.alt}
+              loading="lazy"
+              class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            />
+            <div class="absolute inset-0 bg-black/0 group-hover:bg-black/30 transition-colors"></div>
+          </div>
+        </ScrollReveal>
+      ))}
+
+      <div class="js-gallery-lightbox hidden fixed inset-0 z-50 bg-black/90 items-center justify-center">
+        <button type="button" class="js-gallery-close absolute top-4 right-4 text-white p-2" aria-label="Close">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+        </button>
+        <button type="button" class="js-gallery-prev absolute left-4 text-white p-2" aria-label="Previous">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+        </button>
+        <div class="relative max-w-4xl max-h-[80vh] w-full h-full flex items-center justify-center">
+          <img class="js-gallery-image max-w-full max-h-full object-contain" src="" alt="" />
+        </div>
+        <button type="button" class="js-gallery-next absolute right-4 text-white p-2" aria-label="Next">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '@/scripts/gallery.ts';
+</script>

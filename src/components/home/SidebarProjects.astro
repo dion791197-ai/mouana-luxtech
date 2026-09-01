@@ -1,0 +1,42 @@
+---
+import { projects } from '@/data/projects';
+import type { Locale } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+---
+
+<div class="sidebar-projects fixed left-0 top-1/2 -translate-y-1/2 z-30 hidden xl:block">
+  <div class="bg-charcoal/90 backdrop-blur-sm rounded-r-lg overflow-hidden">
+    {projects.map((project) => (
+      <a
+        href={`/${locale}/projects/${project.slug}`}
+        class="group flex items-center gap-2 px-3 py-3 text-white/70 hover:text-gold hover:bg-charcoal transition-all border-b border-white/10 last:border-0"
+      >
+        <span class="w-2 h-2 rounded-full bg-gold flex-shrink-0"></span>
+        <span class="text-xs tracking-wide whitespace-nowrap overflow-hidden text-ellipsis max-w-[120px]">
+          {project.name.replace('Mouana ', '')}
+        </span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="opacity-0 group-hover:opacity-100 transition-opacity"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  .sidebar-projects {
+    opacity: 0;
+    transform: translateX(-100px);
+    animation: sidebar-in 0.5s 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+  }
+
+  @keyframes sidebar-in {
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+</style>

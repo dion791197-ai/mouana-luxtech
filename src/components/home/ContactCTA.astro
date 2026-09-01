@@ -1,0 +1,42 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import Button from '@/components/shared/Button.astro';
+import { companyInfo } from '@/data/company';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const home = dict.home.contact;
+const { contact } = companyInfo;
+---
+
+<section class="py-20 md:py-28 bg-cream">
+  <div class="max-w-4xl mx-auto px-4 md:px-8 text-center">
+    <ScrollReveal>
+      <span class="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">Contact</span>
+      <h2 class="font-serif text-3xl md:text-4xl lg:text-5xl font-light text-charcoal mb-4">
+        {home.title}
+      </h2>
+      <p class="text-warm-gray mb-10">{home.subtitle}</p>
+
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-6 mb-10">
+        <a href={`mailto:${contact.email}`} class="flex items-center gap-2 text-charcoal hover:text-gold transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>
+          {contact.email}
+        </a>
+        <a href={`tel:${contact.phone}`} class="flex items-center gap-2 text-charcoal hover:text-gold transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"></path></svg>
+          {contact.phone}
+        </a>
+      </div>
+
+      <Button href={`/${locale}/contact`} variant="secondary" size="lg">
+        Request a Meeting
+      </Button>
+    </ScrollReveal>
+  </div>
+</section>

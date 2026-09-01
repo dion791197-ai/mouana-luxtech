@@ -1,0 +1,39 @@
+---
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import { projects } from '@/data/projects';
+import type { Locale, Dictionary } from '@/lib/i18n';
+
+interface Props {
+  locale: Locale;
+  dict: Dictionary;
+}
+
+const { locale, dict } = Astro.props;
+const home = dict.home.map;
+---
+
+<section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+  <SectionHeading title={home.title} subtitle={home.subtitle} />
+
+  <ScrollReveal>
+    <div class="relative aspect-[21/9] bg-cream rounded-lg overflow-hidden">
+      <div class="absolute inset-0 bg-cover bg-center" style="background-image: url(/images/phuket-map.svg)">
+        <div class="absolute inset-0 bg-charcoal/10"></div>
+      </div>
+
+      {projects.map((project) => (
+        <a
+          href={`/${locale}/projects/${project.slug}`}
+          class="absolute group"
+          style={`left: ${((project.coordinates.lng - 98.2) / 0.3) * 100}%; top: ${((8.2 - project.coordinates.lat) / 0.5) * 100}%;`}
+        >
+          <div class="w-4 h-4 bg-gold rounded-full border-2 border-white shadow-lg transform -translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform"></div>
+          <div class="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 bg-white px-3 py-1 rounded shadow-lg text-xs whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">
+            {project.name}
+          </div>
+        </a>
+      ))}
+    </div>
+  </ScrollReveal>
+</section>
