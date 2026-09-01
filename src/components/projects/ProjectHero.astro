@@ -1,0 +1,37 @@
+---
+import type { Project } from '@/types/project';
+
+interface Props {
+  project: Project;
+  dict: Record<string, string>;
+}
+
+const { project, dict } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  available: 'bg-green-500',
+  sold_out: 'bg-red-500',
+  coming_soon: 'bg-yellow-500',
+};
+
+const statusLabels: Record<string, string> = {
+  available: dict.available || 'Available',
+  sold_out: dict.soldOut || 'Sold Out',
+  coming_soon: dict.comingSoon || 'Coming Soon',
+};
+---
+
+<section class="relative h-[70vh] min-h-[500px] flex items-end">
+  <img src={project.heroImage} alt={project.name} class="absolute inset-0 w-full h-full object-cover" />
+  <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent"></div>
+
+  <div class="relative z-10 max-w-7xl mx-auto px-4 md:px-8 pb-16 w-full">
+    <span class={`${statusColors[project.status]} text-white text-xs px-3 py-1 rounded-full inline-block mb-4`}>
+      {statusLabels[project.status]}
+    </span>
+    <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-2">
+      {project.name}
+    </h1>
+    <p class="text-white/80 text-lg">{project.tagline}</p>
+  </div>
+</section>

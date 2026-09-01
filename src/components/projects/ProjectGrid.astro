@@ -1,0 +1,77 @@
+---
+import ProjectCard from './ProjectCard.astro';
+import type { Project } from '@/types/project';
+import type { Locale } from '@/lib/i18n';
+
+interface Props {
+  projects: Project[];
+  locale: Locale;
+  dict: Record<string, string>;
+}
+
+const { projects, locale, dict } = Astro.props;
+
+const filters = [
+  { value: 'all', label: 'All Projects' },
+  { value: 'available', label: dict.availableProjects || 'Available Projects' },
+  { value: 'sold_out', label: dict.soldOutProjects || 'Projects Sold Out' },
+] as const;
+---
+
+<div class="js-project-grid">
+  <div class="flex flex-wrap justify-center gap-4 mb-12">
+    {filters.map((f, i) => (
+      <button
+        type="button"
+        data-filter={f.value}
+        class:list={[
+          'js-filter-btn px-6 py-2 text-sm tracking-wide transition-all',
+          i === 0 ? 'bg-charcoal text-white' : 'bg-cream text-charcoal hover:bg-charcoal/10',
+        ]}
+      >
+        {f.label}
+      </button>
+    ))}
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    {projects.map((project) => (
+      <div class="js-project-item transition-all duration-300" data-status={project.status}>
+        <ProjectCard project={project} locale={locale} dict={dict} />
+      </div>
+    ))}
+  </div>
+</div>
+
+<script>
+  function initProjectGrid() {
+    document.querySelectorAll<HTMLElement>('.js-project-grid').forEach((root) => {
+      if (root.dataset.gridInit) return;
+      root.dataset.gridInit = 'true';
+
+      const buttons = Array.from(root.querySelectorAll<HTMLButtonElement>('.js-filter-btn'));
+      const items = Array.from(root.querySelectorAll<HTMLElement>('.js-project-item'));
+
+      buttons.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.filter!;
+
+          buttons.forEach((b) => {
+            b.classList.remove('bg-charcoal', 'text-white');
+            b.classList.add('bg-cream', 'text-charcoal', 'hover:bg-charcoal/10');
+          });
+          btn.classList.add('bg-charcoal', 'text-white');
+          btn.classList.remove('bg-cream', 'text-charcoal', 'hover:bg-charcoal/10');
+
+          items.forEach((item) => {
+            const show = filter === 'all' || item.dataset.status === filter;
+            item.classList.toggle('hidden', !show);
+          });
+        });
+      });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initProjectGrid);
+  document.addEventListener('astro:page-load', initProjectGrid);
+</script>

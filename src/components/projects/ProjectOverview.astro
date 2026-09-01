@@ -1,0 +1,43 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import type { Project } from '@/types/project';
+
+interface Props {
+  project: Project;
+  dict: Record<string, string>;
+}
+
+const { project, dict } = Astro.props;
+
+const stats = [
+  { label: dict.projectArea || 'Project area', value: project.projectArea },
+  { label: dict.landArea || 'Land area', value: project.landArea },
+  { label: dict.usableArea || 'Usable Area', value: project.usableArea },
+  { label: dict.projectType || 'Project type', value: project.projectType },
+  { label: dict.totalUnits || 'Total Units', value: String(project.totalUnits) },
+  { label: dict.unitType || 'Unit Type', value: project.unitType },
+  { label: dict.residentialUnits || 'Residential Units', value: String(project.residentialUnits) },
+];
+---
+
+<section class="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <ScrollReveal>
+    <span class="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">
+      {dict.overview || 'Project Overview'}
+    </span>
+    <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-12">
+      {project.name}
+    </h2>
+  </ScrollReveal>
+
+  <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    {stats.map((stat, i) => (
+      <ScrollReveal delay={i * 0.05}>
+        <div class="bg-cream p-6 rounded-lg">
+          <p class="text-warm-gray text-xs tracking-wide uppercase mb-2">{stat.label}</p>
+          <p class="font-serif text-xl text-charcoal">{stat.value}</p>
+        </div>
+      </ScrollReveal>
+    ))}
+  </div>
+</section>

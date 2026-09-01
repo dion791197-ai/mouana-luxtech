@@ -1,0 +1,54 @@
+---
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+
+interface Props {
+  images: string[];
+  name: string;
+  dict: Record<string, string>;
+}
+
+const { images, name, dict } = Astro.props;
+const shown = images.slice(0, 12);
+---
+
+<section class="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <SectionHeading title={dict.gallery || 'Gallery'} subtitle={name} />
+
+  <div class="js-gallery grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+    {shown.map((image, i) => (
+      <div
+        class="relative aspect-[4/3] cursor-pointer overflow-hidden group rounded"
+        data-gallery-item
+        data-src={image}
+        data-alt={`${name} ${i + 1}`}
+      >
+        <img
+          src={image}
+          alt={`${name} ${i + 1}`}
+          loading="lazy"
+          class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors"></div>
+      </div>
+    ))}
+
+    <div class="js-gallery-lightbox hidden fixed inset-0 z-50 bg-black/95 items-center justify-center">
+      <button type="button" class="js-gallery-close absolute top-4 right-4 text-white p-2 z-10" aria-label="Close">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+      </button>
+      <button type="button" class="js-gallery-prev absolute left-4 text-white p-2 z-10" aria-label="Previous">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg>
+      </button>
+      <div class="relative max-w-5xl max-h-[85vh] w-full h-full flex items-center justify-center">
+        <img class="js-gallery-image max-w-full max-h-full object-contain" src="" alt="" />
+      </div>
+      <button type="button" class="js-gallery-next absolute right-4 text-white p-2 z-10" aria-label="Next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<script>
+  import '@/scripts/gallery.ts';
+</script>

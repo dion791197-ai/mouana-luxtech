@@ -1,0 +1,61 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import SectionHeading from '@/components/shared/SectionHeading.astro';
+import type { VillaType } from '@/types/project';
+
+interface Props {
+  villaTypes: VillaType[];
+  dict: Record<string, string>;
+}
+
+const { villaTypes, dict } = Astro.props;
+---
+
+<section class="py-16 md:py-24 px-4 md:px-8 max-w-7xl mx-auto">
+  <SectionHeading title={dict.villaDetails || 'Villa Details'} />
+
+  <div class="space-y-16">
+    {villaTypes.map((villa, i) => (
+      <ScrollReveal>
+        <div class={`grid grid-cols-1 lg:grid-cols-2 gap-12 items-center`}>
+          <div class={i % 2 === 1 ? 'lg:order-2' : ''}>
+            <h3 class="font-serif text-2xl text-charcoal mb-4">{villa.name}</h3>
+
+            <div class="grid grid-cols-2 gap-4 mb-6">
+              <div class="flex items-center gap-2 text-warm-gray">
+                <span class="text-gold font-serif text-2xl">{villa.usableArea}</span>
+                <span class="text-xs">sqm</span>
+              </div>
+              <div class="flex items-center gap-3 text-warm-gray text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4v16"></path><path d="M2 8h18a2 2 0 0 1 2 2v10"></path><path d="M2 17h20"></path><path d="M6 8v9"></path></svg>
+                {villa.bedrooms} {dict.bedrooms || 'Bedrooms'}
+                {villa.maidRoom && ' (+1 Maidroom)'}
+              </div>
+              <div class="flex items-center gap-3 text-warm-gray text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4 8 6"></path><path d="M17 19v2"></path><path d="M2 12h20"></path><path d="M7 19v2"></path><path d="M9 5 7.621 3.621A2.121 2.121 0 0 0 4 5v16"></path></svg>
+                {villa.bathrooms} {dict.bathrooms || 'Bathrooms'}
+              </div>
+              <div class="flex items-center gap-3 text-warm-gray text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" class="text-gold" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 16H9m10 0h3v-3.15a1 1 0 0 0-.84-.99L16 11l-2.7-3.6a1 1 0 0 0-.8-.4H5.24a2 2 0 0 0-1.8 1.1l-.8 1.63A6 6 0 0 0 2 12.42V16h2"></path><circle cx="6.5" cy="16.5" r="2.5"></circle><circle cx="16.5" cy="16.5" r="2.5"></circle></svg>
+                {villa.parking} {dict.parking || 'Parking'}
+              </div>
+            </div>
+
+            <p class="text-xs text-warm-gray">
+              {dict.landArea || 'Land area'}: {villa.landArea}
+            </p>
+          </div>
+
+          <div class={`grid grid-cols-2 gap-4 ${i % 2 === 1 ? 'lg:order-1' : ''}`}>
+            <div class="relative aspect-square bg-cream rounded overflow-hidden">
+              <img src={villa.floorPlan} alt={`${villa.name} Floor Plan`} class="w-full h-full object-contain p-4" />
+            </div>
+            <div class="relative aspect-square bg-cream rounded overflow-hidden">
+              <img src={villa.areaPlan} alt={`${villa.name} Area Plan`} class="w-full h-full object-contain p-4" />
+            </div>
+          </div>
+        </div>
+      </ScrollReveal>
+    ))}
+  </div>
+</section>

@@ -1,0 +1,47 @@
+---
+import type { Project } from '@/types/project';
+import type { Locale } from '@/lib/i18n';
+
+interface Props {
+  project: Project;
+  locale: Locale;
+  dict: Record<string, string>;
+}
+
+const { project, locale, dict } = Astro.props;
+
+const statusColors: Record<string, string> = {
+  available: 'bg-green-500',
+  sold_out: 'bg-red-500',
+  coming_soon: 'bg-yellow-500',
+};
+
+const statusLabels: Record<string, string> = {
+  available: dict.available || 'Available',
+  sold_out: dict.soldOut || 'Sold Out',
+  coming_soon: dict.comingSoon || 'Coming Soon',
+};
+---
+
+<a href={`/${locale}/projects/${project.slug}`} class="group block">
+  <div class="relative aspect-[4/3] overflow-hidden mb-4">
+    <img
+      src={project.heroImage}
+      alt={project.name}
+      loading="lazy"
+      class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+    />
+    <div class="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent"></div>
+
+    <div class="absolute top-4 right-4">
+      <span class={`${statusColors[project.status]} text-white text-xs px-3 py-1 rounded-full`}>
+        {statusLabels[project.status]}
+      </span>
+    </div>
+  </div>
+
+  <h3 class="font-serif text-xl text-charcoal group-hover:text-gold transition-colors mb-2">
+    {project.name}
+  </h3>
+  <p class="text-warm-gray text-sm">{project.tagline}</p>
+</a>
