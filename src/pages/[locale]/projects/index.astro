@@ -1,0 +1,29 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import ProjectGrid from '@/components/projects/ProjectGrid.astro';
+import { projects } from '@/data/projects';
+import { locales, getDictionary, type Locale } from '@/lib/i18n';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const dict = getDictionary(locale);
+const projectsDict = dict.projects;
+---
+
+<Layout locale={locale} dict={dict} title={`${projectsDict.title} | Mouana Phuket`}>
+  <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center bg-charcoal">
+    <div class="text-center px-4 max-w-3xl">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-4">
+        {projectsDict.title}
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed">{projectsDict.subtitle}</p>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+    <ProjectGrid projects={projects} locale={locale} dict={projectsDict} />
+  </section>
+</Layout>

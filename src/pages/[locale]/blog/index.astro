@@ -1,0 +1,36 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import BlogCard from '@/components/blog/BlogCard.astro';
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import { blogPosts } from '@/data/blog';
+import { locales, getDictionary, type Locale } from '@/lib/i18n';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const dict = getDictionary(locale);
+const blogDict = dict.blog;
+---
+
+<Layout locale={locale} dict={dict} title={`${blogDict.title} | Mouana Phuket`}>
+  <section class="relative h-[50vh] min-h-[400px] flex items-center justify-center bg-charcoal">
+    <div class="text-center px-4 max-w-3xl">
+      <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl text-white font-light mb-4">
+        {blogDict.title}
+      </h1>
+      <p class="text-white/70 text-lg leading-relaxed">{blogDict.subtitle}</p>
+    </div>
+  </section>
+
+  <section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+      {blogPosts.map((post, i) => (
+        <ScrollReveal delay={i * 0.1}>
+          <BlogCard post={post} locale={locale} />
+        </ScrollReveal>
+      ))}
+    </div>
+  </section>
+</Layout>

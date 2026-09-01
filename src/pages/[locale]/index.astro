@@ -1,0 +1,30 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import HeroSection from '@/components/home/HeroSection.astro';
+import ProjectShowcase from '@/components/home/ProjectShowcase.astro';
+import AboutPreview from '@/components/home/AboutPreview.astro';
+import LatestProject from '@/components/home/LatestProject.astro';
+import GalleryShowcase from '@/components/home/GalleryShowcase.astro';
+import ProjectMap from '@/components/home/ProjectMap.astro';
+import ContactCTA from '@/components/home/ContactCTA.astro';
+import SidebarProjects from '@/components/home/SidebarProjects.astro';
+import { locales, getDictionary, type Locale } from '@/lib/i18n';
+
+export function getStaticPaths() {
+  return locales.map((locale) => ({ params: { locale } }));
+}
+
+const locale = Astro.params.locale as Locale;
+const dict = getDictionary(locale);
+---
+
+<Layout locale={locale} dict={dict} title="Mouana Phuket | Luxury Villas in Phuket">
+  <HeroSection locale={locale} dict={dict} />
+  <ProjectShowcase locale={locale} dict={dict} />
+  <AboutPreview locale={locale} dict={dict} />
+  <LatestProject locale={locale} dict={dict} />
+  <GalleryShowcase dict={dict} />
+  <ProjectMap locale={locale} dict={dict} />
+  <ContactCTA locale={locale} dict={dict} />
+  <SidebarProjects locale={locale} />
+</Layout>
