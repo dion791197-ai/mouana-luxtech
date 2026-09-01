@@ -1,0 +1,70 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import { companyInfo } from '@/data/company';
+import type { Dictionary } from '@/lib/i18n';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+const contactDict = dict.contact.info;
+const { contact } = companyInfo;
+
+const items = [
+  {
+    icon: '<rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 5L2 7"/>',
+    label: contactDict.email,
+    value: contact.email,
+    href: `mailto:${contact.email}`,
+  },
+  {
+    icon: '<path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384"/>',
+    label: contactDict.phone,
+    value: contact.phone,
+    href: `tel:${contact.phone}`,
+  },
+  {
+    icon: '<path d="M7.9 20A9 9 0 1 0 4 16.1L2 22Z"/>',
+    label: contactDict.whatsapp,
+    value: contact.phone,
+    href: `https://wa.me/${contact.whatsapp}`,
+  },
+  {
+    icon: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+    label: contactDict.address,
+    value: contact.address,
+  },
+];
+---
+
+<ScrollReveal>
+  <h3 class="font-serif text-2xl text-charcoal mb-8">{contactDict.title}</h3>
+  <div class="space-y-6">
+    {items.map((item) => (
+      <div class="flex items-start gap-4">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="text-gold mt-0.5 flex-shrink-0"
+          set:html={item.icon}
+        />
+        <div>
+          <p class="text-xs text-warm-gray tracking-wide uppercase mb-1">{item.label}</p>
+          {item.href ? (
+            <a href={item.href} class="text-charcoal hover:text-gold transition-colors">{item.value}</a>
+          ) : (
+            <p class="text-charcoal">{item.value}</p>
+          )}
+        </div>
+      </div>
+    ))}
+  </div>
+</ScrollReveal>

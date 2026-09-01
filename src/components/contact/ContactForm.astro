@@ -1,0 +1,187 @@
+---
+import { projects } from '@/data/projects';
+import { languages } from '@/lib/i18n';
+import type { Dictionary, Locale } from '@/lib/i18n';
+
+interface Props {
+  dict: Dictionary;
+  locale: Locale;
+}
+
+const { dict } = Astro.props;
+const contactDict = dict.contact.form;
+---
+
+<form class="js-contact-form space-y-6" novalidate>
+  <div>
+    <label class="block text-sm text-charcoal mb-2" for="cf-name">{contactDict.name}</label>
+    <input
+      id="cf-name"
+      name="name"
+      class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors"
+    />
+    <p class="js-error text-red-500 text-xs mt-1 hidden" data-for="name"></p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm text-charcoal mb-2" for="cf-email">{contactDict.email}</label>
+      <input
+        id="cf-email"
+        name="email"
+        type="email"
+        class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors"
+      />
+      <p class="js-error text-red-500 text-xs mt-1 hidden" data-for="email"></p>
+    </div>
+    <div>
+      <label class="block text-sm text-charcoal mb-2" for="cf-phone">{contactDict.phone}</label>
+      <input
+        id="cf-phone"
+        name="phone"
+        type="tel"
+        class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors"
+      />
+      <p class="js-error text-red-500 text-xs mt-1 hidden" data-for="phone"></p>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label class="block text-sm text-charcoal mb-2" for="cf-language">{contactDict.language}</label>
+      <select
+        id="cf-language"
+        name="preferredLanguage"
+        class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors"
+      >
+        <option value="">--</option>
+        {languages.map((lang) => (
+          <option value={lang.code}>{lang.label}</option>
+        ))}
+      </select>
+    </div>
+    <div>
+      <label class="block text-sm text-charcoal mb-2" for="cf-project">{contactDict.project}</label>
+      <select
+        id="cf-project"
+        name="interestedProject"
+        class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors"
+      >
+        <option value="">--</option>
+        {projects.map((p) => (
+          <option value={p.slug}>{p.name}</option>
+        ))}
+      </select>
+    </div>
+  </div>
+
+  <div>
+    <label class="block text-sm text-charcoal mb-2" for="cf-message">{contactDict.message}</label>
+    <textarea
+      id="cf-message"
+      name="message"
+      rows="5"
+      class="w-full px-4 py-3 border border-gray-200 rounded focus:border-gold focus:outline-none transition-colors resize-none"
+    ></textarea>
+    <p class="js-error text-red-500 text-xs mt-1 hidden" data-for="message"></p>
+  </div>
+
+  <button
+    type="submit"
+    class="js-submit-btn w-full bg-charcoal text-white py-4 px-8 flex items-center justify-center gap-2 hover:bg-charcoal-light transition-colors disabled:opacity-50 hover:scale-[1.01] active:scale-[0.99]"
+  >
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+    <span class="js-submit-label">{contactDict.submit}</span>
+  </button>
+
+  <p class="js-form-error text-red-500 text-sm text-center hidden">{contactDict.error}</p>
+</form>
+
+<div class="js-contact-success hidden text-center py-12">
+  <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#22c55e" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mx-auto mb-4"><path d="M21.801 10A10 10 0 1 1 17 3.335"/><path d="m9 11 3 3L22 4"/></svg>
+  <p class="font-serif text-2xl text-charcoal mb-2">{contactDict.success}</p>
+</div>
+
+<script is:inline define:vars={{ i18n: { required: contactDict.required, invalidEmail: contactDict.invalidEmail, sending: contactDict.sending, submit: contactDict.submit } }}>
+  function initContactForm() {
+    const form = document.querySelector('.js-contact-form');
+    if (!form || form.dataset.init) return;
+    form.dataset.init = 'true';
+
+    const success = document.querySelector('.js-contact-success');
+    const submitBtn = form.querySelector('.js-submit-btn');
+    const submitLabel = form.querySelector('.js-submit-label');
+    const formError = form.querySelector('.js-form-error');
+
+    const showError = (field, message) => {
+      const el = form.querySelector(`.js-error[data-for="${field}"]`);
+      if (!el) return;
+      el.textContent = message;
+      el.classList.toggle('hidden', !message);
+    };
+
+    const clearErrors = () => {
+      form.querySelectorAll('.js-error').forEach((el) => {
+        el.textContent = '';
+        el.classList.add('hidden');
+      });
+      formError.classList.add('hidden');
+    };
+
+    const validate = (data) => {
+      const errors = {};
+      if (!data.name.trim()) errors.name = i18n.required;
+      if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) errors.email = i18n.invalidEmail;
+      if (!data.phone.trim()) errors.phone = i18n.required;
+      if (!data.message.trim()) errors.message = i18n.required;
+      return errors;
+    };
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      clearErrors();
+
+      const formData = new FormData(form);
+      const data = {
+        name: String(formData.get('name') || ''),
+        email: String(formData.get('email') || ''),
+        phone: String(formData.get('phone') || ''),
+        preferredLanguage: String(formData.get('preferredLanguage') || ''),
+        interestedProject: String(formData.get('interestedProject') || ''),
+        message: String(formData.get('message') || ''),
+      };
+
+      const errors = validate(data);
+      if (Object.keys(errors).length > 0) {
+        Object.entries(errors).forEach(([field, message]) => showError(field, message));
+        return;
+      }
+
+      submitBtn.disabled = true;
+      submitLabel.textContent = i18n.sending;
+
+      try {
+        const response = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+
+        if (response.ok) {
+          form.classList.add('hidden');
+          success.classList.remove('hidden');
+        } else {
+          formError.classList.remove('hidden');
+        }
+      } catch {
+        formError.classList.remove('hidden');
+      } finally {
+        submitBtn.disabled = false;
+        submitLabel.textContent = i18n.submit;
+      }
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initContactForm);
+  document.addEventListener('astro:page-load', initContactForm);
+</script>
