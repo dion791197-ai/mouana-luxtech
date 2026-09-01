@@ -1,0 +1,22 @@
+{
+  "nav": { "home": "หน้าแรก", "about": "เกี่ยวกับเรา", "projects": "โครงการ", "contact": "ติดต่อ", "blog": "บล็อก" },
+  "home": {
+    "hero": { "title": "ค้นหาบ้านในฝันของคุณ", "subtitle": "วิลล่าหรูในภูเก็ต", "description": "ยินดีต้อนรับสู่ Mouana Phuket ที่ความหรูหราและความงามตามธรรมชาติมาบรรจบกัน", "cta": "ดูโครงการ" },
+    "about": { "title": "ยกระดับไลฟ์สไตล์ สวรรค์รอคุณอยู่", "description": "กว่า 17 ปีที่ Modern 79 ทุ่มเทให้กับการสร้างพื้นที่อยู่อาศัยที่ยอดเยี่ยม", "cta": "ดูโครงการทั้งหมด" },
+    "latestProject": { "label": "โครงการล่าสุด", "cta": "นัดหมาย" },
+    "showcase": { "title": "7 โครงการ - 7 ทำเล", "subtitle": "ค้นพบความงามของวิลล่าของเรา" },
+    "gallery": { "title": "บ้านที่สะดวกสบายสำหรับชีวิตที่มีความสุข", "subtitle": "แกลเลอรีของเราเป็นผลงานชิ้นเอกที่แสดงภูมิทัศน์ที่สวยงาม" },
+    "video": { "title": "ทำเลที่ยอดเยี่ยมสำหรับวิลล่าในฝัน", "subtitle": "เปลี่ยนความฝันให้เป็นจริงของชีวิตหรูหรา" },
+    "map": { "title": "สำรวจโครงการของเรา", "subtitle": "ค้นหาทำเลที่สมบูรณ์แบบสำหรับวิลล่าในฝัน" },
+    "contact": { "title": "นัดหมาย", "subtitle": "อย่าลังเลที่จะติดต่อเรา" },
+    "cta": { "title": "ให้เราช่วยค้นหาอสังหาริมทรัพย์ที่เหมาะสม", "description": "สัมผัสประสบการณ์ชีวิตหรูหราที่ Mouana Phuket", "button": "ดูโครงการ" }
+  },
+  "aboutPage": { "hero": { "title": "เกี่ยวกับ Mouana Phuket", "description": "Mouana Phuket มีประสบการณ์กว่า 17 ปี" }, "story": { "title": "การพัฒนาอสังหาริมทรัพย์ Mouana Phuket", "subtitle": "เปลี่ยนความฝันให้เป็นจริง" }, "services": { "title": "Mouana Phuket นำเสนอ" } },
+  "services": { "privateVilla": "การเป็นเจ้าของวิลล่าส่วนตัว", "privateVillaDesc": "การเป็นเจ้าของวิลล่าหรูพร้อมสระว่ายน้ำส่วนตัว", "communityLiving": "ชุมชนสุดพิเศษ", "communityLivingDesc": "ชุมชนรั้วรอบขอบชิดพร้อมสิ่งอำนวยความสะดวกร่วม", "legalSupport": "การสนับสนุนทางกฎหมายและการเงิน", "legalSupportDesc": "ความช่วยเหลือด้านกฎหมายและการเงินอย่างครบวงจร", "facilities": "สิ่งอำนวยความสะดวกรวม", "facilitiesDesc": "เข้าถึงสิ่งอำนวยความสะดวกครบครัน", "investment": "โอกาสในการลงทุน", "investmentDesc": "ผลตอบแทนจากค่าเช่าและการเพิ่มมูลค่า", "concierge": "บริการคอนเซียร์จ 24/7", "conciergeDesc": "บริการคอนเซียร์จตลอด 24 ชั่วโมง", "interiorDesign": "การออกแบบตกแต่งภายใน", "interiorDesignDesc": "บริการออกแบบตกแต่งภายในระดับมืออาชีพ", "sustainable": "การก่อสร้างที่ยั่งยืน", "sustainableDesc": "วิธีการก่อสร้างที่เป็นมิตรกับสิ่งแวดล้อม" },
+  "projects": { "title": "แสดงโครงการ", "subtitle": "สำรวจโครงการที่น่าสนใจของเรา", "available": "พร้อมขาย", "soldOut": "ขายหมดแล้ว", "comingSoon": "เร็วๆ นี้", "viewProject": "ดูโครงการ", "seeDetails": "ดูรายละเอียด", "overview": "ภาพรวมโครงการ", "introduction": "แนะนำ", "location": "ข้อได้เปรียบของทำเล", "masterPlan": "แผนแม่บท", "villaDetails": "รายละเอียดวิลล่า", "gallery": "แกลเลอรี", "availableProjects": "โครงการที่พร้อมขาย", "soldOutProjects": "โครงการที่ขายหมดแล้ว", "projectArea": "พื้นที่โครงการ", "landArea": "พื้นที่ดิน", "usableArea": "พื้นที่ใช้สอย", "projectType": "ประเภทโครงการ", "totalUnits": "จำนวนยูนิต", "unitType": "ประเภทยูนิต", "residentialUnits": "ยูนิตที่อยู่อาศัย", "bedrooms": "ห้องนอน", "bathrooms": "ห้องน้ำ", "parking": "ที่จอดรถ", "maidRoom": "ห้องแม่บ้าน" },
+  "contact": { "title": "ติดต่อเรา", "subtitle": "เรายินดีช่วยเหลือคุณ", "formTitle": "ให้เราช่วยค้นหาอสังหาริมทรัพย์ที่เหมาะสม", "form": { "name": "ชื่อ-นามสกุล", "email": "อีเมล", "phone": "โทรศัพท์ / WhatsApp", "language": "ภาษาที่ต้องการ", "project": "โครงการที่สนใจ", "message": "ข้อความ", "submit": "ส่งแบบฟอร์ม", "sending": "กำลังส่ง...", "success": "ขอบคุณ! เราจะติดต่อกลับโดยเร็ว", "error": "เกิดข้อผิดพลาด กรุณาลองใหม่", "required": "จำเป็นต้องกรอก", "invalidEmail": "กรุณาใส่อีเมลที่ถูกต้อง" }, "info": { "title": "ข้อมูลการติดต่อ", "email": "อีเมล", "phone": "โทรศัพท์", "whatsapp": "WhatsApp", "address": "ที่อยู่" } },
+  "blog": { "title": "บล็อกและข่าวสาร", "subtitle": "ติดตามข่าวสารอสังหาริมทรัพย์หรูในภูเก็ต", "readMore": "อ่านต่อ", "backToBlog": "กลับไปบล็อก", "publishedOn": "เผยแพร่เมื่อ", "byAuthor": "โดย", "tags": "แท็ก" },
+  "footer": { "description": "Mouana Phuket มุ่งมั่นสร้างพื้นที่อยู่อาศัยที่ยอดเยี่ยม", "contact": "ติดต่อ", "navigation": "นำทาง", "enquire": "สอบถาม", "contactUs": "ติดต่อเรา", "copyright": "Copyright © 2025 Mouana Phuket", "developedBy": "พัฒนาด้วยความเป็นเลิศ" },
+  "common": { "learnMore": "เรียนรู้เพิ่มเติม", "seeAll": "ดูทั้งหมด", "readMore": "อ่านต่อ", "backToTop": "กลับด้านบน", "loading": "กำลังโหลด...", "search": "ค้นหา" },
+  "languages": { "en": "English", "ru": "Русский", "zh": "中文", "th": "ไทย" }
+}

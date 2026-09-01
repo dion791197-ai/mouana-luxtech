@@ -1,0 +1,22 @@
+{
+  "nav": { "home": "首页", "about": "关于我们", "projects": "项目", "contact": "联系我们", "blog": "博客" },
+  "home": {
+    "hero": { "title": "找到您的梦想之家", "subtitle": "普吉岛豪华别墅", "description": "欢迎来到Mouana Phuket，奢华与自然美景交汇之处，为您打造终极天堂。", "cta": "查看项目" },
+    "about": { "title": "提升您的生活方式，天堂在等待", "description": "17年来，Modern 79致力于打造卓越的居住空间。", "cta": "查看所有项目" },
+    "latestProject": { "label": "最新项目", "cta": "预约会面" },
+    "showcase": { "title": "7个项目 - 7个地点", "subtitle": "探索我们别墅的美丽" },
+    "gallery": { "title": "舒适家居，幸福生活", "subtitle": "我们的画廊展示了令人叹为观止的景观和精心设计的室内空间。" },
+    "video": { "title": "梦幻别墅的绝佳位置", "subtitle": "将梦想变为奢华生活的现实" },
+    "map": { "title": "探索我们的项目", "subtitle": "为您梦想中的别墅找到完美位置" },
+    "contact": { "title": "预约会面", "subtitle": "如有任何疑问，请随时联系我们" },
+    "cta": { "title": "让我们帮您找到合适的房产", "description": "体验Mouana Phuket提供的全方位奢华生活。", "button": "查看项目" }
+  },
+  "aboutPage": { "hero": { "title": "关于Mouana Phuket", "description": "Mouana Phuket拥有超过17年的专业经验。" }, "story": { "title": "Mouana Phuket房产开发", "subtitle": "将梦想变为奢华生活的现实" }, "services": { "title": "Mouana Phuket提供的服务" } },
+  "services": { "privateVilla": "私人别墅所有权", "privateVillaDesc": "独家拥有带私人泳池的豪华别墅。", "communityLiving": "专属社区生活", "communityLivingDesc": "封闭式社区，共享设施。", "legalSupport": "法律和财务支持", "legalSupportDesc": "全面协助法律流程和所有权结构。", "facilities": "配套设施", "facilitiesDesc": "享受高端配套设施。", "investment": "投资机会", "investmentDesc": "强劲的租金收益和资本增值。", "concierge": "24/7礼宾服务", "conciergeDesc": "全天候礼宾服务。", "interiorDesign": "室内设计咨询", "interiorDesignDesc": "专业室内设计服务。", "sustainable": "可持续建筑", "sustainableDesc": "环保建筑方法和材料。" },
+  "projects": { "title": "项目展示", "subtitle": "探索我们引人入胜的项目。", "available": "在售", "soldOut": "已售罄", "comingSoon": "即将推出", "viewProject": "查看项目", "seeDetails": "查看详情", "overview": "项目概览", "introduction": "介绍", "location": "地理位置优势", "masterPlan": "总体规划", "villaDetails": "别墅详情", "gallery": "画廊", "availableProjects": "可售项目", "soldOutProjects": "已售罄项目", "projectArea": "项目面积", "landArea": "土地面积", "usableArea": "使用面积", "projectType": "项目类型", "totalUnits": "总单元数", "unitType": "单元类型", "residentialUnits": "住宅单元", "bedrooms": "卧室", "bathrooms": "浴室", "parking": "停车位", "maidRoom": "佣人房" },
+  "contact": { "title": "联系我们", "subtitle": "我们随时为您提供帮助。", "formTitle": "让我们帮您找到合适的房产", "form": { "name": "姓名", "email": "邮箱", "phone": "电话/WhatsApp", "language": "首选语言", "project": "感兴趣的项目", "message": "留言", "submit": "发送咨询", "sending": "发送中...", "success": "谢谢！我们会尽快联系您。", "error": "出错了，请重试。", "required": "必填项", "invalidEmail": "请输入有效的邮箱" }, "info": { "title": "联系方式", "email": "邮箱", "phone": "电话", "whatsapp": "WhatsApp", "address": "地址" } },
+  "blog": { "title": "博客与新闻", "subtitle": "了解普吉岛豪华房地产的最新动态。", "readMore": "阅读更多", "backToBlog": "返回博客", "publishedOn": "发布于", "byAuthor": "作者", "tags": "标签" },
+  "footer": { "description": "Mouana Phuket致力于打造反映您理想的卓越生活空间。", "contact": "联系方式", "navigation": "导航", "enquire": "咨询", "contactUs": "联系我们", "copyright": "Copyright © 2025 Mouana Phuket", "developedBy": "精心打造" },
+  "common": { "learnMore": "了解更多", "seeAll": "查看全部", "readMore": "阅读更多", "backToTop": "回到顶部", "loading": "加载中...", "search": "搜索" },
+  "languages": { "en": "English", "ru": "Русский", "zh": "中文", "th": "ไทย" }
+}

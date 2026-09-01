@@ -1,0 +1,168 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About Us",
+    "projects": "Projects",
+    "contact": "Contact",
+    "blog": "Blog"
+  },
+  "home": {
+    "hero": {
+      "title": "Find Your Dream Home",
+      "subtitle": "Luxury villas & houses in Phuket",
+      "description": "Welcome to Mouana Phuket, where luxury and natural beauty converge to create your ultimate paradise. Experience opulent island living like never before.",
+      "cta": "See Our Projects"
+    },
+    "about": {
+      "title": "Elevate Your Lifestyle, Your Paradise Awaits",
+      "description": "For over 17 years, we at Modern 79 have been dedicated to creating exceptional living spaces. Today, we proudly present the culmination of our expertise: the Mouana Phuket platform. Situated on one of the world's most coveted island paradises, Mouana Phuket is your invitation to experience luxury living in all its dimensions.",
+      "cta": "See All Projects"
+    },
+    "latestProject": {
+      "label": "Latest Project",
+      "cta": "Request a Meeting"
+    },
+    "showcase": {
+      "title": "7 Projects - 7 Locations",
+      "subtitle": "Discover the beauty of our villas"
+    },
+    "gallery": {
+      "title": "Comfort Home for Happy Living",
+      "subtitle": "Our Gallery section is a visual masterpiece, showcasing the breathtaking landscapes, meticulously designed interiors, and the essence of luxury living."
+    },
+    "video": {
+      "title": "Amazing Location for Dream Villas",
+      "subtitle": "Turning dreams into amazing realities of luxury living"
+    },
+    "map": {
+      "title": "Explore Our Projects",
+      "subtitle": "Discover the perfect location for your dream villa"
+    },
+    "contact": {
+      "title": "Schedule a Meeting",
+      "subtitle": "Do not hesitate to contact us for any information"
+    },
+    "cta": {
+      "title": "Let Us Help You Find the Right Property",
+      "description": "Experience the full spectrum of luxury living that Mouana Phuket has to offer. Click 'See All Projects' and embark on a journey to explore our diverse portfolio of exceptional residences.",
+      "button": "See Our Projects"
+    }
+  },
+  "aboutPage": {
+    "hero": {
+      "title": "About Mouana Phuket",
+      "description": "At Mouana Phuket, we bring over 17 years of dedicated expertise to the art of luxury living, proudly curating exceptional spaces that redefine paradise."
+    },
+    "story": {
+      "title": "Mouana Phuket Property Development",
+      "subtitle": "Turning dreams into amazing realities of luxury living"
+    },
+    "services": {
+      "title": "What Mouana Phuket Offers"
+    }
+  },
+  "services": {
+    "privateVilla": "Private Villa Ownership",
+    "privateVillaDesc": "Exclusive ownership of luxury pool villas with premium finishes and private amenities.",
+    "communityLiving": "Exclusive Community Living",
+    "communityLivingDesc": "Gated communities with shared amenities and a sense of belonging among like-minded residents.",
+    "legalSupport": "Comprehensive Legal & Financial Support",
+    "legalSupportDesc": "Full assistance with legal processes, ownership structures, and financial planning.",
+    "facilities": "Facilities Included",
+    "facilitiesDesc": "Access to premium facilities including pools, fitness centers, and landscaped gardens.",
+    "investment": "Investment Opportunities",
+    "investmentDesc": "Strong rental yields and capital appreciation in Phuket's growing property market.",
+    "concierge": "24/7 Concierge",
+    "conciergeDesc": "Round-the-clock concierge services to assist with every aspect of your island lifestyle.",
+    "interiorDesign": "Interior Design Consultation",
+    "interiorDesignDesc": "Professional interior design services to create your perfect living space.",
+    "sustainable": "Sustainable Building Practices",
+    "sustainableDesc": "Eco-conscious construction methods and materials for responsible luxury living."
+  },
+  "projects": {
+    "title": "Projects Showcase",
+    "subtitle": "Explore our captivating project showcase and discover how we transform dreams into luxurious reality.",
+    "available": "Available Now",
+    "soldOut": "Sold Out",
+    "comingSoon": "Coming Soon",
+    "viewProject": "View Project",
+    "seeDetails": "See Details",
+    "overview": "Project Overview",
+    "introduction": "Introduction",
+    "location": "Prime Location Advantage",
+    "masterPlan": "Master Plan",
+    "villaDetails": "Villa Details",
+    "gallery": "Gallery",
+    "availableProjects": "Available Projects",
+    "soldOutProjects": "Projects Sold Out",
+    "projectArea": "Project area",
+    "landArea": "Land area",
+    "usableArea": "Usable Area",
+    "projectType": "Project type",
+    "totalUnits": "Total Unit",
+    "unitType": "Unit Type",
+    "residentialUnits": "Residental Unit",
+    "bedrooms": "Bedrooms",
+    "bathrooms": "Bathrooms",
+    "parking": "Parking spaces",
+    "maidRoom": "Maidroom"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "subtitle": "We're here to assist you on your journey to paradise, so don't hesitate to reach out and start your Mouana Phuket experience today.",
+    "formTitle": "Let's help you to find the right property",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone / WhatsApp",
+      "language": "Preferred Language",
+      "project": "Interested Project",
+      "message": "Your Message",
+      "submit": "Send Enquiry",
+      "sending": "Sending...",
+      "success": "Thank you! We'll be in touch soon.",
+      "error": "Something went wrong. Please try again.",
+      "required": "This field is required",
+      "invalidEmail": "Please enter a valid email"
+    },
+    "info": {
+      "title": "Get in Touch",
+      "email": "Email",
+      "phone": "Phone",
+      "whatsapp": "WhatsApp",
+      "address": "Address"
+    }
+  },
+  "blog": {
+    "title": "Blog & News",
+    "subtitle": "Stay informed with the latest insights on luxury real estate, investment trends, and lifestyle in Phuket.",
+    "readMore": "Read More",
+    "backToBlog": "Back to Blog",
+    "publishedOn": "Published on",
+    "byAuthor": "by",
+    "tags": "Tags"
+  },
+  "footer": {
+    "description": "At Mouana Phuket, we're committed to crafting exceptional living spaces that reflect your aspirations. Explore our world of luxury, where paradise meets contemporary comfort.",
+    "contact": "Contact",
+    "navigation": "Navigation",
+    "enquire": "Enquire",
+    "contactUs": "Contact us",
+    "copyright": "Copyright © 2025 Mouana Phuket",
+    "developedBy": "Developed with excellence"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "seeAll": "See All",
+    "readMore": "Read More",
+    "backToTop": "Back to Top",
+    "loading": "Loading...",
+    "search": "Search"
+  },
+  "languages": {
+    "en": "English",
+    "ru": "Русский",
+    "zh": "中文",
+    "th": "ไทย"
+  }
+}
