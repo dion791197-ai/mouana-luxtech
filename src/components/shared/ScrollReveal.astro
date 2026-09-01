@@ -1,0 +1,17 @@
+---
+interface Props {
+  class?: string;
+  direction?: 'up' | 'down' | 'left' | 'right' | 'none';
+  delay?: number;
+}
+
+const { class: className = '', direction = 'up', delay = 0 } = Astro.props;
+---
+
+<div
+  class={className}
+  data-reveal={direction}
+  style={delay ? `transition-delay: ${delay}s` : undefined}
+>
+  <slot />
+</div>

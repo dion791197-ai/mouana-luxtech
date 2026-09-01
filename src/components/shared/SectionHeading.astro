@@ -1,0 +1,40 @@
+---
+import ScrollReveal from './ScrollReveal.astro';
+
+interface Props {
+  label?: string;
+  title: string;
+  subtitle?: string;
+  align?: 'left' | 'center';
+  light?: boolean;
+}
+
+const { label, title, subtitle, align = 'center', light = false } = Astro.props;
+---
+
+<ScrollReveal class={`mb-12 md:mb-16 ${align === 'center' ? 'text-center' : 'text-left'}`}>
+  {label && (
+    <span class="inline-block text-xs font-medium tracking-[0.3em] uppercase text-gold mb-4">
+      {label}
+    </span>
+  )}
+  <h2
+    class:list={[
+      'font-serif text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-4',
+      light ? 'text-white' : 'text-charcoal',
+    ]}
+  >
+    {title}
+  </h2>
+  {subtitle && (
+    <p
+      class:list={[
+        'text-base md:text-lg max-w-2xl leading-relaxed',
+        align === 'center' ? 'mx-auto' : '',
+        light ? 'text-white/70' : 'text-warm-gray',
+      ]}
+    >
+      {subtitle}
+    </p>
+  )}
+</ScrollReveal>
