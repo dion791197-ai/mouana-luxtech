@@ -1,0 +1,40 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import { companyInfo } from '@/data/company';
+import type { Dictionary } from '@/lib/i18n';
+
+interface Props {
+  dict: Dictionary;
+}
+
+const { dict } = Astro.props;
+const aboutPage = dict.aboutPage.story;
+---
+
+<section class="py-20 md:py-28 px-4 md:px-8 max-w-7xl mx-auto">
+  <div class="max-w-3xl">
+    <ScrollReveal>
+      <span class="text-xs tracking-[0.3em] uppercase text-gold mb-4 block">About</span>
+      <h2 class="font-serif text-3xl md:text-4xl font-light text-charcoal mb-4">{aboutPage.title}</h2>
+      <p class="text-gold text-sm tracking-wide mb-8">{aboutPage.subtitle}</p>
+    </ScrollReveal>
+
+    <ScrollReveal delay={0.2}>
+      <div class="space-y-6 text-warm-gray leading-relaxed">
+        <p>{companyInfo.description}</p>
+        <p>
+          Our legacy, spanning two decades and {companyInfo.stats.projects * 3} successful projects,
+          has solidified us as a symbol of quality and reliability in the industry. It is a legacy
+          built upon collaboration, where we've had the privilege of partnering with discerning
+          individuals like you to transform aspirations into reality.
+        </p>
+        <p>
+          Mouana Phuket represents the next chapter in this collective journey. Nestled on one of
+          the world's most coveted island paradises, it embodies the perfect fusion of nature's
+          beauty and contemporary luxury, offering a range of meticulously curated projects that
+          cater to diverse tastes.
+        </p>
+      </div>
+    </ScrollReveal>
+  </div>
+</section>

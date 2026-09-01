@@ -1,0 +1,31 @@
+---
+import ScrollReveal from '@/components/shared/ScrollReveal.astro';
+import { companyInfo } from '@/data/company';
+
+const { stats } = companyInfo;
+const counters = [
+  { target: stats.projects, label: 'Projects' },
+  { target: stats.villas, label: 'Villas' },
+  { target: stats.villasAvailable, label: 'Available' },
+  { target: stats.villasInProgress, label: 'In Progress' },
+];
+---
+
+<section class="py-20 md:py-28 bg-charcoal">
+  <div class="max-w-4xl mx-auto px-4 md:px-8">
+    <ScrollReveal>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-12">
+        {counters.map((c) => (
+          <div class="text-center">
+            <div class="font-serif text-5xl md:text-6xl text-gold mb-2" data-counter={c.target}>0</div>
+            <p class="text-white/60 text-sm tracking-wide uppercase">{c.label}</p>
+          </div>
+        ))}
+      </div>
+    </ScrollReveal>
+  </div>
+</section>
+
+<script>
+  import '@/scripts/counter.ts';
+</script>
